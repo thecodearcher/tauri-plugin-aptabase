@@ -141,8 +141,8 @@ impl AptabaseClient {
 
     /// Flushes the event queue, blocking the current thread.
     pub fn flush_blocking(&self) {
-        futures::executor::block_on(async {
-            self.flush().await;
-        });
+       tauri::async_runtime::block_on(async {
+             self.flush().await;
+         });
     }
 }
